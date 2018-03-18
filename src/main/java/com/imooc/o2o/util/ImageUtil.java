@@ -64,7 +64,7 @@ public class ImageUtil {
 	 * 生成随机文件名，当前年月日时分秒+五位随机数
 	 * @return
 	 */
-	private static String getRandomFileName() {
+	public static String getRandomFileName() {
 //		获取随机五位数
 		int rannum = r.nextInt(89999) + 10000;
 		String nowTimeStr = sdf.format(new Date());
