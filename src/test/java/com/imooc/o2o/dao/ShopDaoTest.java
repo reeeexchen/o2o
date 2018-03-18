@@ -59,4 +59,13 @@ public class ShopDaoTest {
 		int effectedNum = shopDao.updateShop(shop);
 		assertEquals(1,effectedNum);
 	}
+
+	@Test
+	public void queryByShopId() {
+		long shopId = 1;
+		Shop shop = shopDao.queryByShopId(shopId);
+		System.out.println("AREA_ID : " + shop.getArea().getAreaId());
+		System.out.println("AREA_NAME : " + shop.getArea().getAreaName());
+		System.out.println(shop);
+	}
 }

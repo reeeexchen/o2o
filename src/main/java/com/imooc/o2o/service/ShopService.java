@@ -2,8 +2,10 @@ package com.imooc.o2o.service;
 
 import com.imooc.o2o.dto.ShopExecution;
 import com.imooc.o2o.entity.Shop;
+import com.imooc.o2o.exception.ShopOperationException;
 
 import java.io.File;
+import java.io.InputStream;
 
 
 /**
@@ -13,22 +15,27 @@ import java.io.File;
 public interface ShopService {
 	/**
 	 * 创建店铺
+	 *
 	 * @param shop
-	 * @param shopImg
+	 * @param shopImgInputStream
+	 * @param fileName
 	 * @return
 	 */
-	ShopExecution addShop(Shop shop,File shopImg);
+	ShopExecution addShop(Shop shop, InputStream shopImgInputStream, String fileName) throws ShopOperationException;
 
 	/**
 	 * 更新店铺信息（商家）
+	 *
 	 * @param shop
-	 * @param shopImg
+	 * @param shopImgInputStream
+	 * @param fileName
 	 * @return
 	 */
-	ShopExecution modifyShop(Shop shop,File shopImg);
+	ShopExecution modifyShop(Shop shop, InputStream shopImgInputStream, String fileName) throws ShopOperationException;
 
 	/**
 	 * 查询指定店铺信息
+	 *
 	 * @param shopId
 	 * @return
 	 */
