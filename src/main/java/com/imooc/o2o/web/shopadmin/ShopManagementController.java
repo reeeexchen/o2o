@@ -35,7 +35,7 @@ import java.util.Map;
  * @Date: Create in 23:57 2018/3/17
  */
 @Controller
-@RequestMapping("/shopadmin")
+@RequestMapping(value = "shopadmin")
 public class ShopManagementController {
 
 	@Autowired
@@ -47,18 +47,6 @@ public class ShopManagementController {
 	@Autowired
 	private AreaService areaService;
 
-//	@Autowired
-//	private LocalAuthService localAuthService;
-
-//	@RequestMapping(value = "/list",method = RequestMethod.GET)
-//	@ResponseBody
-//	private Map<String ,Object> list(HttpServletRequest request){
-//		Map<String ,Object> modelMap = new HashMap<String, Object>();
-//		PersonInfo user = (PersonInfo) request.getSession().getAttribute("user");
-//		long employeeId = user.getUserId();
-//
-//		return null;
-//	}
 
 	@RequestMapping(value = "/getshopbyid", method = RequestMethod.GET)
 	@ResponseBody
@@ -90,11 +78,11 @@ public class ShopManagementController {
 		List<ShopCategory> shopCategoryList = new ArrayList<ShopCategory>();
 		List<Area> areaList = new ArrayList<Area>();
 		try {
-			shopCategoryList = shopCategoryService.getAllSecondLevelShopCategory();
+			shopCategoryList = shopCategoryService.getShopCategoryList(new ShopCategory());
 			areaList = areaService.getAreaList();
 		} catch (IOException e) {
 			modelMap.put("success", false);
-			modelMap.put("errMsg", e.getMessage());
+			modelMap.put("errMsg", e.toString());
 		}
 		modelMap.put("shopCategoryList", shopCategoryList);
 		modelMap.put("areaList", areaList);
@@ -225,23 +213,5 @@ public class ShopManagementController {
 			return modelMap;
 		}
 	}
-
-	private void filterAttribute(Shop shop) {
-
-	}
-
-//	private boolean hasAccountBind(HttpServletRequest request, long userId) {
-//		if (request.getSession().getAttribute("bindAccount") == null) {
-//			LocalAuth localAuth = localAuthService.getLocalAuthByUserId(userId);
-//			if (localAuth != null && localAuth.getUserId() != null) {
-//				request.getSession().setAttribute("bindAccount", localAuth);
-//				return true;
-//			} else {
-//				return false;
-//			}
-//		} else {
-//			return true;
-//		}
-//	}
 
 }

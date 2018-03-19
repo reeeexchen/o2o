@@ -11,7 +11,7 @@ import java.util.List;
  */
 public interface ShopCategoryDao {
 	/**
-	 *
+	 * 获取店铺相关类别 查询店铺分类
 	 * @param shopCategoryCondition
 	 * @return
 	 */

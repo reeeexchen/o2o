@@ -1,66 +1,63 @@
-
+/**
+ *
+ */
 $(function () {
-    var shopId = getQueryString('shopId');
-    var isEdit = shopId ? true : false;
-    var initUrl= '/o2o/shopadmin/getshopinitinfo';
+    var initUrl = '/o2o/shopadmin/getshopinitinfo';
     var registerShopUrl = '/o2o/shopadmin/registershop';
-    var shopInfoUrl = '/o2o/shopadmin/getshopbyid?shopId=' + shopId;
-    var editShopUrl = '/o2o/shop/modifyshop';
-    // alert(initUrl);
     getShopInitInfo();
+
     function getShopInitInfo() {
-        $.getJSON(initUrl,function (data) {
-            if (data.success){
+        $.getJSON(initUrl, function (data) {
+            if (data.success) {
                 var tempHtml = '';
                 var tempAreaHtml = '';
-                data.shopCategoryList.map(function (item,index) {
-                    tempHtml += '<option data-id=" ' + item.shopCategoryId + ' "> '
+                data.shopCategoryList.map(function (item, index) {
+                    tempHtml += '<option data-id="' + item.shopCategoryId + '">'
                         + item.shopCategoryName + '</option>';
                 });
-                data.areaList.map(function (item,index) {
-                    tempAreaHtml += '<option data-id=" ' + item.areaId + ' "> '
-                        + item.areaName + '</option>';
+                data.areaList.map(function (item, index) {
+                    tempAreaHtml += '<option data-id="' + item.areaId + '">'
+                        + item.areaName + '</oprion>';
                 });
                 $('#shop-category').html(tempHtml);
                 $('#area').html(tempAreaHtml);
             }
         });
-        
         $('#submit').click(function () {
             var shop = {};
-            shop.shopName = $('shop-name').val();
-            shop.shopAddr = $('shop-addr').val();
-            shop.phone = $('shop-phone').val();
-            shop.shopDesc = $('shop-desc').val();
+            shop.shopName = $('#shop-name').val();
+            shop.shopAddr = $('#shop-addr').val();
+            shop.phone = $('#shop-phone').val();
+            shop.shopDesc = $('#shop-desc').val();
             shop.shopCategory = {
-                shopCategoryId : $('#shop-category').find('option').not(function () {
+                shopCategory: $('#shop-category').find('option').not(function () {
                     return !this.selected;
                 }).data('id')
             };
             shop.area = {
-                areaId : $('#area').find('option').not(function () {
+                areaId: $('#area').find('option').not(function () {
                     return !this.selected;
                 }).data('id')
             };
-            var shopImg = $('shop-img')[0].files[0];
-            var formData = new formData();
-            formData.append('shopImg',shopImg);
-            formData.append('shopStr',JSON.stringify(shop));
+            var shopImg = $('#shop-img')[0].files[0];
+            var formData = new FormData();
+            formData.append('shopImg', shopImg);
+            formData.append('shopStr', JSON.stringify(shop));
             $.ajax({
-               url : registerShopUrl,
-               type : 'POST',
-               data : formData,
-               contentType : false,
-                processDate : false,
-                cache : false,
-                success : function (data) {
-                   if(data.success){
-                       $.toast('提交成功');
-                   }else{
-                       $.toast('提交失败' + data.errMsg);
-                   }
+                url: registerShopUrl,
+                type: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,
+                cache: false,
+                success: function (data) {
+                    if (data.success) {
+                        $.toast('提交成功！');
+                    } else {
+                        $.toast('提交失败！' + data.errMsg);
+                    }
                 }
             });
-        })
+        });
     }
 })

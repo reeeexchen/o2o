@@ -10,6 +10,9 @@ import java.util.List;
  */
 public interface AreaService {
 
+	/**
+	 * @return
+	 */
 	List<Area> getAreaList();
 
 }

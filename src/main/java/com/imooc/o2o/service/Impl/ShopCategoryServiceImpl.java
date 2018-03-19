@@ -36,8 +36,8 @@ public class ShopCategoryServiceImpl implements ShopCategoryService {
 	}
 
 	@Override
-	public List<ShopCategory> getShopCategoryList(Long parentId) throws IOException {
-		return null;
+	public List<ShopCategory> getShopCategoryList(ShopCategory shopCategoryCondition) throws IOException {
+		return shopCategoryDao.queryShopCategory(shopCategoryCondition);
 	}
 
 	@Override

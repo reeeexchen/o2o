@@ -23,11 +23,11 @@ public interface ShopCategoryService {
 
 	/**
 	 *
-	 * @param parentId
+	 * @param shopCategoryCondition
 	 * @return
 	 * @throws IOException
 	 */
-	List<ShopCategory> getShopCategoryList(Long parentId) throws IOException;
+	List<ShopCategory> getShopCategoryList(ShopCategory shopCategoryCondition) throws IOException;
 
 	/**
 	 *
