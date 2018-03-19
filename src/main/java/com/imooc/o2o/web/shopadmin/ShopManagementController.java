@@ -172,7 +172,6 @@ public class ShopManagementController {
 			MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest) request;
 			//提取相对应文件流
 			shopImg = (CommonsMultipartFile) multipartHttpServletRequest.getFile("shopImg");
-
 		} else {
 			modelMap.put("success", false);
 			modelMap.put("errMsg", "上传图片不能为空");
@@ -180,24 +179,18 @@ public class ShopManagementController {
 		}
 		//2.注册店铺
 		if (shop != null && shopImg != null) {
-			PersonInfo owner = (PersonInfo) request.getSession().getAttribute("user");
+			PersonInfo owner = new PersonInfo();
+			// session TODO
+			owner.setUserId(1L);
 			shop.setOwner(owner);
-			ShopExecution shopExecution = null;
-
+			ShopExecution se;
 			try {
-				shopExecution = shopService.addShop(shop, shopImg.getInputStream(), shopImg.getOriginalFilename());
-				if (shopExecution.getState() == ShopStateEnum.CHECK.getState()) {
+				se = shopService.addShop(shop, shopImg.getInputStream(), shopImg.getOriginalFilename());
+				if (se.getState() == ShopStateEnum.CHECK.getState()) {
 					modelMap.put("success", true);
-					// 若shop创建成功，则加入session中，作为权限使用
-					List<Shop> shopList = (List<Shop>) request.getSession().getAttribute("shopList");
-					if (shopList == null || shopList.size() == 0) {
-						shopList = new ArrayList<Shop>();
-					}
-					shopList.add(shopExecution.getShop());
-					request.getSession().setAttribute("shopList", shopList);
 				} else {
 					modelMap.put("success", false);
-					modelMap.put("errMsg", shopExecution.getStateInfo());
+					modelMap.put("errMsg", se.getStateInfo());
 				}
 			} catch (ShopOperationException e) {
 				modelMap.put("success", false);
@@ -209,7 +202,7 @@ public class ShopManagementController {
 			return modelMap;
 		} else {
 			modelMap.put("success", false);
-			modelMap.put("errMsg", "请完成店铺信息");
+			modelMap.put("errMsg", "请输入店铺信息");
 			return modelMap;
 		}
 	}
