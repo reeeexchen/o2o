@@ -5,7 +5,7 @@
 <mapper namespace="com.imooc.o2o.dao.AreaDao">
     <select id="queryArea" resultType="com.imooc.o2o.entity.Area">
         SELECT area_id,area_name,priority,create_time,edit_time
-        FROM tb_area
+        FROM o2o.tb_area
         ORDER BY priority DESC
     </select>
 

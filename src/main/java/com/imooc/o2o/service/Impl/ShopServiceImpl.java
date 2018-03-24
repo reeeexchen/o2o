@@ -7,14 +7,16 @@ import com.imooc.o2o.enums.ShopStateEnum;
 import com.imooc.o2o.exception.ShopOperationException;
 import com.imooc.o2o.service.ShopService;
 import com.imooc.o2o.util.ImageUtil;
+import com.imooc.o2o.util.PageCalculator;
 import com.imooc.o2o.util.PathUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @Author:REX
@@ -80,8 +82,8 @@ public class ShopServiceImpl implements ShopService {
 				}
 				//2.更新店铺信息
 				shop.setEditTime(new Date());
-				int num = shopDao.updateShop(shop);
-				if (num <= 0) {
+				int effectedNum  = shopDao.updateShop(shop);
+				if (effectedNum  <= 0) {
 					return new ShopExecution(ShopStateEnum.INNER_ERROR);
 				} else {
 					shop = shopDao.queryByShopId(shop.getShopId());
@@ -98,7 +100,22 @@ public class ShopServiceImpl implements ShopService {
 		return shopDao.queryByShopId(shopId);
 	}
 
-	private void addShopImg(Shop shop, InputStream shopImgInputStream, String fileName) {
+	@Override
+	public ShopExecution getShopList(Shop shopCondition, int pageIndex, int pageSize) {
+		int rowIndex = PageCalculator.calculateRowIndex(pageIndex,pageSize);
+		List<Shop> shopList = shopDao.queryShopList(shopCondition,rowIndex,pageSize);
+		int count = shopDao.queryShopCount(shopCondition);
+		ShopExecution se = new ShopExecution();
+		if(shopList != null){
+			se.setShopList(shopList);
+			se.setCount(count);
+		}else{
+			se.setState(ShopStateEnum.INNER_ERROR.getState());
+		}
+		return se;
+	}
+
+	private void addShopImg(Shop shop, InputStream shopImgInputStream, String fileName) throws ShopOperationException,IOException {
 		//获取shop图片目录的相对值路径
 		String dest = PathUtil.getShopImagePath(shop.getShopId());
 		String shopImgAddr = ImageUtil.generateThumbnail(shopImgInputStream, fileName, dest);

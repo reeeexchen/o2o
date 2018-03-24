@@ -37,15 +37,15 @@ public class ShopExecution {
 
 	//店铺操作成功
 	public ShopExecution(ShopStateEnum stateEnum, Shop shop) {
-		this.state = state;
-		this.stateInfo = stateInfo;
+		this.state = stateEnum.getState();
+		this.stateInfo = stateEnum.getStateInfo();
 		this.shop = shop;
 	}
 
 	//店铺操作成功
 	public ShopExecution(ShopStateEnum stateEnum, List<Shop> shopList) {
-		this.state = state;
-		this.stateInfo = stateInfo;
+		this.state = stateEnum.getState();
+		this.stateInfo = stateEnum.getStateInfo();
 		this.shopList = shopList;
 	}
 

@@ -18,6 +18,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Date;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -61,14 +62,25 @@ public class ShopServiceTest {
 		Shop shop = new Shop();
 		shop.setShopId(1);
 		shop.setShopName("修改测试店铺名称1");
-		File shopImg = new File("D:\\JavaDemo\\images\\test2.png");
+		File shopImg = new File("D:\\JavaDemo\\images\\test1.png");
 		InputStream is = new FileInputStream(shopImg);
-		ShopExecution shopExecution = shopService.modifyShop(shop,is,"test2.png");
+		ShopExecution shopExecution = shopService.modifyShop(shop,is,"test1.png");
 		System.out.println("NEW IMAGE ADDRESS : " + shopExecution.getShop().getShopImg());
 		System.out.println(shopExecution);
 	}
 
 	@Test
 	public void getByShopId() {
+	}
+
+	@Test
+	public void getShopList(){
+		Shop shopCondition = new Shop();
+		ShopCategory sc = new ShopCategory();
+		sc.setShopCategoryId(3);
+		shopCondition.setShopCategory(sc);
+		ShopExecution se = shopService.getShopList(shopCondition,1,5);
+		System.out.println("店铺列表数为 ： " + se.getShopList().size());
+		System.out.println("店铺总数为 ： " + se.getCount());
 	}
 }

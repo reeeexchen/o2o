@@ -13,6 +13,7 @@ import java.io.InputStream;
  * @Date: Create in 16:22 2018/3/17
  */
 public interface ShopService {
+
 	/**
 	 * 创建店铺
 	 *
@@ -34,11 +35,20 @@ public interface ShopService {
 	ShopExecution modifyShop(Shop shop, InputStream shopImgInputStream, String fileName) throws ShopOperationException;
 
 	/**
-	 * 查询指定店铺信息
+	 * 通过店铺ID查询指定店铺信息
 	 *
 	 * @param shopId
 	 * @return
 	 */
 	Shop getByShopId(long shopId);
+
+	/**
+	 * 根据shopCondition分页返回相应店铺列表
+	 * @param shopCondition
+	 * @param pageIndex
+	 * @param pageSize
+	 * @return
+	 */
+	public ShopExecution getShopList(Shop shopCondition,int pageIndex,int pageSize);
 
 }
