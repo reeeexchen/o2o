@@ -76,6 +76,7 @@ public class ShopDaoTest {
 		PersonInfo owner = new PersonInfo();
 		owner.setUserId(1);
 		shopCondition.setOwner(owner);
+		shopCondition.setShopName("咖啡");
 		List<Shop> shopList = shopDao.queryShopList(shopCondition, 0, 5);
 		int count = shopDao.queryShopCount(shopCondition);
 		System.out.println(shopList.size());

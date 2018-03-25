@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
- * 店铺页面转发 路由规则
+ * 路由转发规则
  *
  * @Author:REX
  * @Date: Create in 0:38 2018/3/18
@@ -27,5 +27,10 @@ public class ShopAdminController {
 	@RequestMapping(value = "/shopmanagement")
 	public String shopManagement() {
 		return "shop/shopmanagement";
+	}
+
+	@RequestMapping(value = "/productcategorymanagement",method = RequestMethod.GET)
+	public String productCategoryManagement(){
+		return "shop/productcategorymanagement";
 	}
 }

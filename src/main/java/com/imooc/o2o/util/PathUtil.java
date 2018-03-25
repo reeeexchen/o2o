@@ -14,7 +14,7 @@ public class PathUtil {
 		if(os.toLowerCase().startsWith("win")){
 			basePath = "D:/JavaDemo/images/";
 		}else{
-			basePath = "";
+			basePath = "D:/JavaDemo/images/else/";
 		}
 		basePath = basePath.replace("/",seperator);
 		return basePath;

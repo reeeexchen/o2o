@@ -9,6 +9,7 @@ import java.util.Random;
 
 import javax.imageio.ImageIO;
 
+import com.imooc.o2o.dto.ImageHolder;
 import com.imooc.o2o.util.PathUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,24 +47,29 @@ public class ImageUtil {
 	/**
 	 * 处理缩略图并返回新生成图片的相对值路径
 	 *
-	 * @param thumbnailInputStream
-	 * @param fileName
+	 * @param thumbnail
 	 * @param targetAddr
 	 * @return
 	 * @throws IOException
 	 */
-	public static String generateThumbnail(InputStream thumbnailInputStream, String fileName, String targetAddr) throws IOException
+	public static String generateThumbnail(ImageHolder thumbnail, String targetAddr)
 	{
 		String realFileName = getRandomFileName();
-		String extension = getFileExtesion(fileName);
+		String extension = getFileExtesion(thumbnail.getImageName());
 		makeDirPath(targetAddr);
 		String relativeAddr = targetAddr + realFileName + extension;
-		logger.error("current relativeAddr is:" + relativeAddr);
+		logger.error("(generateThumbnail)current relativeAddr is:" + relativeAddr);
 		File dest = new File(PathUtil.getImgBasePath() + relativeAddr);
 		logger.debug("current complete addr is :" + PathUtil.getImgBasePath() + relativeAddr);
-		Thumbnails.of(thumbnailInputStream).size(200, 200)
-				.watermark(Positions.BOTTOM_RIGHT, ImageIO.read(new File(basePath + "/watermark.jpg")), 0.25f)
-				.outputQuality(0.8).toFile(dest);
+		logger.debug("(generateThumbnail)basePath is :" + basePath);
+		try {
+			Thumbnails.of(thumbnail.getImage()).size(200, 200)
+					.watermark(Positions.BOTTOM_RIGHT, ImageIO.read(new File(basePath + "/watermark.png")), 0.25f)
+					.outputQuality(0.8).toFile(dest);
+		} catch (IOException e) {
+			logger.error(e.toString());
+			throw new RuntimeException("创建缩略图失败(generateThumbnail):" + e.toString());
+		}
 		return relativeAddr;
 	}
 
@@ -104,7 +110,7 @@ public class ImageUtil {
 
 	public static void main(String[] args) throws IOException {
 		Thumbnails.of(new File("d:\\timg.jpg")).size(2000, 2000)
-				.watermark(Positions.BOTTOM_RIGHT, ImageIO.read(new File(basePath + "/watermark.jpg")), 0.25f)
+				.watermark(Positions.BOTTOM_RIGHT, ImageIO.read(new File(basePath + "/watermark.png")), 0.25f)
 				.outputQuality(0.8f).toFile("d:\\timgnew.jpg");
 	}
 
@@ -124,5 +130,30 @@ public class ImageUtil {
 			}
 			fileOrPath.delete();
 		}
+	}
+
+	public static String generateNormalImg(ImageHolder thumbnail,String targetAddr){
+		//获取不重复的随机名
+		String realFileName = getRandomFileName();
+		//获取文件拓展名
+		String extension = getFileExtesion(thumbnail.getImageName());
+		//如果目标路径不存在 则创建
+		makeDirPath(targetAddr);
+		//获取文件存储的相对路径（带文件名）
+		String relativeAddr = targetAddr + realFileName + extension;
+		logger.debug("(generateNormalImg)CURRENT RELATIVE_ADDR IS : " + relativeAddr);
+		//获取文件保存的目标路径
+		File dest = new File(PathUtil.getImgBasePath() + relativeAddr);
+		logger.debug("(generateNormalImg)CURRENT COMPLETE_ADDR IS : " + PathUtil.getImgBasePath() + relativeAddr);
+		//调用Thumbnails生成带水印图片
+		try {
+			Thumbnails.of(thumbnail.getImage()).size(337, 640)
+					.watermark(Positions.BOTTOM_RIGHT, ImageIO.read(new File(basePath + "/watermark.png")), 0.25f)
+					.outputQuality(0.9f).toFile(dest);
+		}catch (IOException e){
+			logger.error(e.toString());
+			throw new RuntimeException("创建缩略图失败(generateNormalImg)：" + e.toString());
+		}
+		return relativeAddr;
 	}
 }
