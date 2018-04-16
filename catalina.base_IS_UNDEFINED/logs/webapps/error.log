@@ -1,4 +1,2 @@
-2018-03-25 11:08:22.023 [main] ERROR com.imooc.o2o.util.ImageUtil - current relativeAddr is:upload\item\shop\1\2018032511082213503.jpg
-2018-03-25 11:10:22.761 [main] ERROR com.imooc.o2o.util.ImageUtil - current relativeAddr is:upload\item\shop\1\2018032511102237608.jpg
-2018-03-25 11:10:24.051 [main] ERROR com.imooc.o2o.util.ImageUtil - javax.imageio.IIOException: Can't create an ImageInputStream!
-2018-03-25 11:37:00.092 [main] ERROR com.imooc.o2o.util.ImageUtil - (generateThumbnail)current relativeAddr is:upload\item\shop\1\2018032511370040890.jpg
+2018-03-26 23:11:22.629 [main] ERROR com.imooc.o2o.util.ImageUtil - (generateThumbnail)current relativeAddr is:upload\item\shop\1\2018032623112261975.jpg
+2018-03-26 23:12:12.186 [main] ERROR com.imooc.o2o.util.ImageUtil - (generateThumbnail)current relativeAddr is:upload\item\shop\1\2018032623121244469.jpg

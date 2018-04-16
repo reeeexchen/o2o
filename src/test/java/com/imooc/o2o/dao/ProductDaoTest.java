@@ -148,11 +148,14 @@ public class ProductDaoTest {
 	@Test
 	public void DupdateProduct() {
 		Product product = new Product();
+		ProductCategory pc = new ProductCategory();
 		Shop shop = new Shop();
 		shop.setShopId(1);
+		pc.setProductCategoryId(2L);
 		product.setShop(shop);
 		product.setProductId(1L);
-		product.setProductName("第1个产品");
+		product.setProductCategory(pc);
+		product.setProductName("第2个产品");
 		int effectNum = productDao.updateProduct(product);
 		assertEquals(1,effectNum);
 	}

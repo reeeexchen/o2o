@@ -3,6 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.imooc.o2o.dao.ProductDao">
+
     <resultMap id="productMap" type="com.imooc.o2o.entity.Product">
         <id column="product_id" property="productId"/>
         <result column="product_name" property="productName"/>
@@ -19,7 +20,7 @@
                      javaType="com.imooc.o2o.entity.Shop">
             <id column="shop_id" property="shopId"/>
             <result column="owner_id" property="ownerId"/>
-            <result column="shop_nae" property="shopName"/>
+            <result column="shop_name" property="shopName"/>
         </association>
 
         <association property="productCategory" column="product_category_id"
@@ -92,6 +93,7 @@
         </where>
     </select>
 
+    <!--左连接 允许店铺没有详情图-->
     <select id="queryProductById" resultMap="productMap" parameterType="Long">
         SELECT
             p.product_id,
@@ -136,7 +138,7 @@
             <if test="normalPrice != null">normal_price=#{normalPrice},</if>
             <if test="promotionPrice != null">promotion_price=#{promotionPrice},</if>
             <if test="priority != null">priority=#{priority},</if>
-            <if test="editTime != null">last_edit_time=#{lastEditTime},</if>
+            <if test="editTime != null">edit_time=#{editTime},</if>
             <if test="enableStatus != null">enable_status=#{enableStatus},</if>
             <if test="productCategory != null and productCategory.productCategoryId != null">
                 product_category_id=#{productCategory.productCategoryId}
@@ -146,7 +148,8 @@
         AND shop_id = #{shop.shopId}
     </update>
 
-    <update id="updateProductCategoryToNull" parameterType="Long">
+    <update id="updateProductCategoryToNull" parameterType="Long" keyProperty="product_id"
+        useGeneratedKeys="true">
         UPDATE o2o.tb_product
         SET product_category_id = NULL
         WHERE product_category_id = #{productCategoryId}

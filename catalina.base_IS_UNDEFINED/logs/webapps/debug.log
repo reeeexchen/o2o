@@ -1,19 +1,8 @@
-2018-03-25 11:08:22.072 [main] DEBUG com.imooc.o2o.util.ImageUtil - current complete addr is :D:\JavaDemo\images\upload\item\shop\1\2018032511082213503.jpg
-2018-03-25 11:10:22.765 [main] DEBUG com.imooc.o2o.util.ImageUtil - current complete addr is :D:\JavaDemo\images\upload\item\shop\1\2018032511102237608.jpg
-2018-03-25 11:10:23.878 [main] DEBUG com.imooc.o2o.dao.ProductDao.insertProduct - ==>  Preparing: INSERT INTO o2o.tb_product (product_name, product_desc, img_addr, normal_price, promotion_price, priority, create_time, edit_time, enable_status, product_category_id, shop_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) 
-2018-03-25 11:10:23.907 [main] DEBUG com.imooc.o2o.dao.ProductDao.insertProduct - ==> Parameters: 测试商品1(String), 测试商品1 DESC(String), upload\item\shop\1\2018032511102237608.jpg(String), null, null, 20(Integer), 2018-03-25 11:10:22.755(Timestamp), 2018-03-25 11:10:22.755(Timestamp), 1(Integer), 1(Long), 1(Long)
-2018-03-25 11:10:24.044 [main] DEBUG com.imooc.o2o.dao.ProductDao.insertProduct - <==    Updates: 1
-2018-03-25 11:10:24.050 [main] DEBUG com.imooc.o2o.util.ImageUtil - CURRENT RELATIVE_ADDR IS : upload\item\shop\1\2018032511102462742.jpg
-2018-03-25 11:10:24.050 [main] DEBUG com.imooc.o2o.util.ImageUtil - CURRENT COMPLETE_ADDR IS : D:\JavaDemo\images\upload\item\shop\1\2018032511102462742.jpg
-2018-03-25 11:37:00.097 [main] DEBUG com.imooc.o2o.util.ImageUtil - current complete addr is :D:\JavaDemo\images\upload\item\shop\1\2018032511370040890.jpg
-2018-03-25 11:37:00.097 [main] DEBUG com.imooc.o2o.util.ImageUtil - (generateThumbnail)basePath is :/D:/JavaDemo/o2o/target/test-classes/
-2018-03-25 11:37:00.500 [main] DEBUG com.imooc.o2o.dao.ProductDao.insertProduct - ==>  Preparing: INSERT INTO o2o.tb_product (product_name, product_desc, img_addr, normal_price, promotion_price, priority, create_time, edit_time, enable_status, product_category_id, shop_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) 
-2018-03-25 11:37:00.559 [main] DEBUG com.imooc.o2o.dao.ProductDao.insertProduct - ==> Parameters: 测试商品1(String), 测试商品1 DESC(String), upload\item\shop\1\2018032511370040890.jpg(String), null, null, 20(Integer), 2018-03-25 11:37:00.085(Timestamp), 2018-03-25 11:37:00.085(Timestamp), 1(Integer), 1(Long), 1(Long)
-2018-03-25 11:37:00.596 [main] DEBUG com.imooc.o2o.dao.ProductDao.insertProduct - <==    Updates: 1
-2018-03-25 11:37:00.603 [main] DEBUG com.imooc.o2o.util.ImageUtil - (generateNormalImg)CURRENT RELATIVE_ADDR IS : upload\item\shop\1\2018032511370088967.jpg
-2018-03-25 11:37:00.603 [main] DEBUG com.imooc.o2o.util.ImageUtil - (generateNormalImg)CURRENT COMPLETE_ADDR IS : D:\JavaDemo\images\upload\item\shop\1\2018032511370088967.jpg
-2018-03-25 11:37:00.716 [main] DEBUG com.imooc.o2o.util.ImageUtil - (generateNormalImg)CURRENT RELATIVE_ADDR IS : upload\item\shop\1\2018032511370024957.jpg
-2018-03-25 11:37:00.716 [main] DEBUG com.imooc.o2o.util.ImageUtil - (generateNormalImg)CURRENT COMPLETE_ADDR IS : D:\JavaDemo\images\upload\item\shop\1\2018032511370024957.jpg
-2018-03-25 11:37:01.093 [main] DEBUG c.i.o2o.dao.ProductImgDao.batchInsertProductImg - ==>  Preparing: INSERT INTO o2o.tb_product_img(img_addr, img_desc, priority,create_time, product_id) VALUES ( ?, ?, ?, ?, ? ) , ( ?, ?, ?, ?, ? ) 
-2018-03-25 11:37:01.094 [main] DEBUG c.i.o2o.dao.ProductImgDao.batchInsertProductImg - ==> Parameters: upload\item\shop\1\2018032511370088967.jpg(String), null, null, 2018-03-25 11:37:00.716(Timestamp), 21(Long), upload\item\shop\1\2018032511370024957.jpg(String), null, null, 2018-03-25 11:37:01.018(Timestamp), 21(Long)
-2018-03-25 11:37:01.257 [main] DEBUG c.i.o2o.dao.ProductImgDao.batchInsertProductImg - <==    Updates: 2
+2018-04-15 23:08:52.587 [main] DEBUG com.imooc.o2o.dao.HeadLineDao.queryHeadLine - ==>  Preparing: SELECT line_id, line_name, line_link, line_img, priority, enable_status, create_time, edit_time FROM o2o.tb_headline ORDER BY priority DESC 
+2018-04-15 23:08:52.639 [main] DEBUG com.imooc.o2o.dao.HeadLineDao.queryHeadLine - ==> Parameters: 
+2018-04-15 23:08:52.767 [main] DEBUG com.imooc.o2o.dao.HeadLineDao.queryHeadLine - <==      Total: 2
+2018-04-15 23:18:37.302 [main] DEBUG c.imooc.o2o.dao.ShopCategoryDao.queryShopCategory - ==>  Preparing: SELECT shop_category_id, shop_category_name, shop_category_desc, shop_category_img, priority, create_time, parent_id FROM o2o.tb_shop_category WHERE # 返回1级类别 and parent_id is null # 返回2级类别 ORDER BY priority DESC 
+2018-04-15 23:18:37.328 [main] DEBUG c.imooc.o2o.dao.ShopCategoryDao.queryShopCategory - ==> Parameters: 
+2018-04-15 23:19:06.764 [main] DEBUG c.imooc.o2o.dao.ShopCategoryDao.queryShopCategory - ==>  Preparing: SELECT shop_category_id, shop_category_name, shop_category_desc, shop_category_img, priority, create_time, parent_id FROM o2o.tb_shop_category WHERE parent_id is null ORDER BY priority DESC 
+2018-04-15 23:19:06.817 [main] DEBUG c.imooc.o2o.dao.ShopCategoryDao.queryShopCategory - ==> Parameters: 
+2018-04-15 23:19:06.863 [main] DEBUG c.imooc.o2o.dao.ShopCategoryDao.queryShopCategory - <==      Total: 6

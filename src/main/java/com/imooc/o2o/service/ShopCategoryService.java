@@ -22,7 +22,7 @@ public interface ShopCategoryService {
 	List<ShopCategory> getFirstLevelShopCategoryList() throws IOException;
 
 	/**
-	 *
+	 * 根据查询条件获取shopCategory列表
 	 * @param shopCategoryCondition
 	 * @return
 	 * @throws IOException

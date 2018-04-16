@@ -25,7 +25,7 @@ $(function () {
                 //从返回的JSON当中获取product对象的信息，并赋值
                 var product = data.product;
                 $('#product-name').val(product.productName);
-                $('#product_desc').val(product.productDesc);
+                $('#product-desc').val(product.productDesc);
                 $('#priority').val(product.priority);
                 $('#normal-price').val(product.normalPrice);
                 $('#promotion-price').val(product.promotionPrice);
