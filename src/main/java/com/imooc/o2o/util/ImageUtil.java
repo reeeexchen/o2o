@@ -52,8 +52,7 @@ public class ImageUtil {
 	 * @return
 	 * @throws IOException
 	 */
-	public static String generateThumbnail(ImageHolder thumbnail, String targetAddr)
-	{
+	public static String generateThumbnail(ImageHolder thumbnail, String targetAddr) {
 		String realFileName = getRandomFileName();
 		String extension = getFileExtesion(thumbnail.getImageName());
 		makeDirPath(targetAddr);
@@ -63,9 +62,7 @@ public class ImageUtil {
 		logger.debug("current complete addr is :" + PathUtil.getImgBasePath() + relativeAddr);
 		logger.debug("(generateThumbnail)basePath is :" + basePath);
 		try {
-			Thumbnails.of(thumbnail.getImage()).size(200, 200)
-					.watermark(Positions.BOTTOM_RIGHT, ImageIO.read(new File(basePath + "/watermark.png")), 0.25f)
-					.outputQuality(0.8).toFile(dest);
+			Thumbnails.of(thumbnail.getImage()).watermark(Positions.BOTTOM_RIGHT, ImageIO.read(new File(basePath + "/watermark.png")), 0.25f).outputQuality(1.0).toFile(dest);
 		} catch (IOException e) {
 			logger.error(e.toString());
 			throw new RuntimeException("创建缩略图失败(generateThumbnail):" + e.toString());
@@ -109,9 +106,7 @@ public class ImageUtil {
 	}
 
 	public static void main(String[] args) throws IOException {
-		Thumbnails.of(new File("d:\\timg.jpg")).size(2000, 2000)
-				.watermark(Positions.BOTTOM_RIGHT, ImageIO.read(new File(basePath + "/watermark.png")), 0.25f)
-				.outputQuality(0.8f).toFile("d:\\timgnew.jpg");
+		Thumbnails.of(new File("d:\\timg.jpg")).size(2000, 2000).watermark(Positions.BOTTOM_RIGHT, ImageIO.read(new File(basePath + "/watermark.png")), 0.25f).outputQuality(0.8f).toFile("d:\\timgnew.jpg");
 	}
 
 	/**
@@ -132,7 +127,7 @@ public class ImageUtil {
 		}
 	}
 
-	public static String generateNormalImg(ImageHolder thumbnail,String targetAddr){
+	public static String generateNormalImg(ImageHolder thumbnail, String targetAddr) {
 		//获取不重复的随机名
 		String realFileName = getRandomFileName();
 		//获取文件拓展名
@@ -147,10 +142,8 @@ public class ImageUtil {
 		logger.debug("(generateNormalImg)CURRENT COMPLETE_ADDR IS : " + PathUtil.getImgBasePath() + relativeAddr);
 		//调用Thumbnails生成带水印图片
 		try {
-			Thumbnails.of(thumbnail.getImage()).size(337, 640)
-					.watermark(Positions.BOTTOM_RIGHT, ImageIO.read(new File(basePath + "/watermark.png")), 0.25f)
-					.outputQuality(0.9f).toFile(dest);
-		}catch (IOException e){
+			Thumbnails.of(thumbnail.getImage()).watermark(Positions.BOTTOM_RIGHT, ImageIO.read(new File(basePath + "/watermark.png")), 0.25f).outputQuality(1.0).toFile(dest);
+		} catch (IOException e) {
 			logger.error(e.toString());
 			throw new RuntimeException("创建缩略图失败(generateNormalImg)：" + e.toString());
 		}

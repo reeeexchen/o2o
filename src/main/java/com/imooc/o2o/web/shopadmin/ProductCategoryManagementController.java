@@ -1,12 +1,16 @@
 package com.imooc.o2o.web.shopadmin;
 
 import com.imooc.o2o.dto.ProductCategoryExecution;
+import com.imooc.o2o.dto.ProductExecution;
 import com.imooc.o2o.dto.Result;
+import com.imooc.o2o.entity.Product;
 import com.imooc.o2o.entity.ProductCategory;
 import com.imooc.o2o.entity.Shop;
 import com.imooc.o2o.enums.ProductCategoryStateEnum;
 import com.imooc.o2o.exception.ProductCategoryOperationException;
 import com.imooc.o2o.service.ProductCategoryService;
+import com.imooc.o2o.service.ProductService;
+import com.imooc.o2o.util.HttpServletRequestUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,6 +34,9 @@ public class ProductCategoryManagementController {
 
 	@Autowired
 	private ProductCategoryService productCategoryService;
+	@Autowired
+	private ProductService productService;
+
 
 	@RequestMapping(value = "/getproductcategorylist",method = RequestMethod.GET)
 	@ResponseBody
@@ -78,7 +85,7 @@ public class ProductCategoryManagementController {
 		return modelMap;
 	}
 
-	@RequestMapping(value = "removeproductcategory",method = RequestMethod.POST)
+	@RequestMapping(value = "/removeproductcategory",method = RequestMethod.POST)
 	@ResponseBody
 	private Map<String,Object> removeProductCategory(Long productCategoryId,HttpServletRequest request){
 		Map<String,Object> modelMap = new HashMap<String, Object>();
@@ -103,5 +110,5 @@ public class ProductCategoryManagementController {
 		}
 		return modelMap;
 	}
-
+	// END
 }

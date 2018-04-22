@@ -73,20 +73,16 @@ public class ShopDaoTest {
 	@Test
 	public void queryShopListAndCount(){
 		Shop shopCondition = new Shop();
-		PersonInfo owner = new PersonInfo();
-		owner.setUserId(1);
-		shopCondition.setOwner(owner);
-		shopCondition.setShopName("咖啡");
-		List<Shop> shopList = shopDao.queryShopList(shopCondition, 0, 5);
+		ShopCategory childCategory = new ShopCategory();
+		ShopCategory parentCategory = new ShopCategory();
+		parentCategory.setShopCategoryId(6);
+		childCategory.setParent(parentCategory);
+		shopCondition.setShopCategory(childCategory);
+
+		List<Shop> shopList = shopDao.queryShopList(shopCondition, 0, 7);
 		int count = shopDao.queryShopCount(shopCondition);
-		System.out.println(shopList.size());
-		System.out.println(count);
-		ShopCategory sc = new ShopCategory();
-		sc.setShopCategoryId(3);
-		shopCondition.setShopCategory(sc);
-		shopList = shopDao.queryShopList(shopCondition, 0, 2);
-		System.out.println(shopList.size());
-		count = shopDao.queryShopCount(shopCondition);
-		System.out.println(count);
+		System.out.println("店铺列表大小：" + shopList.size());
+		System.out.println("店铺总数：" + count);
+
 	}
 }
