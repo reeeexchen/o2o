@@ -29,7 +29,7 @@ import java.util.Map;
  * @Date: Create in 23:30 2018/3/23
  */
 @Controller
-@RequestMapping("/shopadmin")
+@RequestMapping("shopadmin")
 public class ProductCategoryManagementController {
 
 	@Autowired

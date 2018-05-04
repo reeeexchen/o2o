@@ -55,7 +55,7 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
 		// 将此商品类别下的商品的类别ID置为空 -> ProductDao
 		try{
 			int effectedNum = productDao.updateProductCategoryToNull(productCategoryId);
-			if(effectedNum <= 0){
+			if(effectedNum < 0){
 				throw new RuntimeException("商品类别更新失败");
 			}
 		}catch (Exception e){

@@ -62,7 +62,7 @@ public class ImageUtil {
 		logger.debug("current complete addr is :" + PathUtil.getImgBasePath() + relativeAddr);
 		logger.debug("(generateThumbnail)basePath is :" + basePath);
 		try {
-			Thumbnails.of(thumbnail.getImage()).watermark(Positions.BOTTOM_RIGHT, ImageIO.read(new File(basePath + "/watermark.png")), 0.25f).outputQuality(1.0).toFile(dest);
+			Thumbnails.of(thumbnail.getImage()).size(200, 200).watermark(Positions.BOTTOM_RIGHT, ImageIO.read(new File(basePath + "/watermark.png")), 0.25f).outputQuality(1.0).toFile(dest);
 		} catch (IOException e) {
 			logger.error(e.toString());
 			throw new RuntimeException("创建缩略图失败(generateThumbnail):" + e.toString());
@@ -105,9 +105,6 @@ public class ImageUtil {
 		return nowTimeStr + rannum;
 	}
 
-	public static void main(String[] args) throws IOException {
-		Thumbnails.of(new File("d:\\timg.jpg")).size(2000, 2000).watermark(Positions.BOTTOM_RIGHT, ImageIO.read(new File(basePath + "/watermark.png")), 0.25f).outputQuality(0.8f).toFile("d:\\timgnew.jpg");
-	}
 
 	/**
 	 * 删除图片或者目录下的所有图片
@@ -142,7 +139,7 @@ public class ImageUtil {
 		logger.debug("(generateNormalImg)CURRENT COMPLETE_ADDR IS : " + PathUtil.getImgBasePath() + relativeAddr);
 		//调用Thumbnails生成带水印图片
 		try {
-			Thumbnails.of(thumbnail.getImage()).watermark(Positions.BOTTOM_RIGHT, ImageIO.read(new File(basePath + "/watermark.png")), 0.25f).outputQuality(1.0).toFile(dest);
+			Thumbnails.of(thumbnail.getImage()).size(337, 640).watermark(Positions.BOTTOM_RIGHT, ImageIO.read(new File(basePath + "/watermark.png")), 0.25f).outputQuality(1.0).toFile(dest);
 		} catch (IOException e) {
 			logger.error(e.toString());
 			throw new RuntimeException("创建缩略图失败(generateNormalImg)：" + e.toString());
