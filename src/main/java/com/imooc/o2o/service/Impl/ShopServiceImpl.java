@@ -7,6 +7,7 @@ import com.imooc.o2o.entity.Shop;
 import com.imooc.o2o.enums.ShopStateEnum;
 import com.imooc.o2o.exception.ShopOperationException;
 import com.imooc.o2o.service.ShopService;
+import com.imooc.o2o.util.COSUtil;
 import com.imooc.o2o.util.ImageUtil;
 import com.imooc.o2o.util.PageCalculator;
 import com.imooc.o2o.util.PathUtil;
@@ -120,6 +121,8 @@ public class ShopServiceImpl implements ShopService {
 		//获取shop图片目录的相对值路径
 		String dest = PathUtil.getShopImagePath(shop.getShopId());
 		String shopImgAddr = ImageUtil.generateThumbnail(thumbnail, dest);
+//		COSUtil cosUtil = new COSUtil();
+//		cosUtil.uploadFile2Cos(shopImgAddr);
 		shop.setShopImg(shopImgAddr);
 	}
 }

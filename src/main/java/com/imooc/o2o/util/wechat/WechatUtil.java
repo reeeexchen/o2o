@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.imooc.o2o.dto.UserAccessToken;
 import com.imooc.o2o.dto.WechatUser;
+import com.imooc.o2o.entity.PersonInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sun.plugin2.gluegen.runtime.BufferFactory;
@@ -32,8 +33,8 @@ public class WechatUtil {
 		log.debug("appid : " + appid);
 		log.debug("appsecret : " + appsecret);
 		// 根据传入的code 拼接访问的URL
-		String url = "https://api.weixin.qq.com/sns/oauth2/access_token" +
-				"?appid=" + appid
+		String url = "https://api.weixin.qq.com/sns/oauth2/access_token"
+				+ "?appid=" + appid
 				+ "&secret=" + appsecret
 				+ "&code=" + code
 				+ "&grant_type=authorization_code";
@@ -133,7 +134,7 @@ public class WechatUtil {
 
 			// 返回的输入流转换字符串
 			InputStream inputStream = httpUrlConn.getInputStream();
-			InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+			InputStreamReader inputStreamReader = new InputStreamReader(inputStream,"utf-8");
 			BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
 
 			String str = null;
@@ -153,6 +154,16 @@ public class WechatUtil {
 			log.error("HTTPS REQUEST ERROR : {}" ,e);
 		}
 		return buffer.toString();
+	}
+
+	public static PersonInfo getPersonInfoFromRequest(WechatUser user){
+		PersonInfo personInfo = new PersonInfo();
+		personInfo.setName(user.getNickname());
+		personInfo.setGender(user.getSex()+"");
+		personInfo.setProfileImg(user.getHeadimgurl());
+		personInfo.setEnableStatus(1);
+		return personInfo;
+
 	}
 
 

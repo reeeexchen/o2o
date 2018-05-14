@@ -12,10 +12,11 @@ import java.io.Serializable;
 public class WechatUser implements Serializable{
 
 	// openId 标识公众号下唯一用户的id
-
-	// 用户昵称
 	@JsonProperty("openId")
 	private String openId;
+	// 用户昵称
+	@JsonProperty("nickname")
+	private String nickname;
 	// 性别
 	@JsonProperty("sex")
 	private int sex;
@@ -37,6 +38,14 @@ public class WechatUser implements Serializable{
 	// 权限
 	@JsonProperty("privilege")
 	private String[] privilege;
+
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
 
 	public String getOpenId() {
 		return openId;

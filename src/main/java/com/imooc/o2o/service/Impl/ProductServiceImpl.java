@@ -9,6 +9,7 @@ import com.imooc.o2o.entity.ProductImg;
 import com.imooc.o2o.enums.ProductStateEnum;
 import com.imooc.o2o.exception.ProductOperationException;
 import com.imooc.o2o.service.ProductService;
+import com.imooc.o2o.util.COSUtil;
 import com.imooc.o2o.util.ImageUtil;
 import com.imooc.o2o.util.PageCalculator;
 import com.imooc.o2o.util.PathUtil;
@@ -80,6 +81,8 @@ public class ProductServiceImpl implements ProductService {
 	private void addThumbnail(Product product, ImageHolder thumbnail) {
 		String dest = PathUtil.getShopImagePath(product.getShop().getShopId());
 		String thumbnailAddr = ImageUtil.generateThumbnail(thumbnail, dest);
+//		COSUtil cosUtil = new COSUtil();
+//		cosUtil.uploadFile2Cos(thumbnailAddr);
 		product.setImgAddr(thumbnailAddr);
 	}
 
@@ -90,6 +93,8 @@ public class ProductServiceImpl implements ProductService {
 		//遍历图片一次去处理 并添加进productImg实体类中
 		for (ImageHolder productImgHolder : productImgHolderList) {
 			String imgAddr = ImageUtil.generateNormalImg(productImgHolder, dest);
+//			COSUtil cosUtil = new COSUtil();
+//			cosUtil.uploadFile2Cos(imgAddr);
 			ProductImg productImg = new ProductImg();
 			productImg.setImgAddr(imgAddr);
 			productImg.setProductId(product.getProductId());
