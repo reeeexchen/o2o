@@ -1,0 +1,25 @@
+Manifest-Version: 1.0
+Class-Path: tomcat-juli-8.5.31.jar thumbnailator-0.4.8.jar spring-webm
+ vc-4.3.17.RELEASE.jar commons-pool2-2.4.3.jar filters-2.0.235-1.jar h
+ ibernate-validator-5.3.6.Final.jar spring-beans-4.3.17.RELEASE.jar je
+ dis-2.9.0.jar spring-jdbc-4.3.17.RELEASE.jar commons-io-2.2.jar sprin
+ g-expression-4.3.17.RELEASE.jar spring-boot-starter-jdbc-1.5.13.RELEA
+ SE.jar spring-context-4.3.17.RELEASE.jar mybatis-3.4.5.jar logback-cl
+ assic-1.1.11.jar spring-boot-autoconfigure-1.5.13.RELEASE.jar spring-
+ core-4.3.17.RELEASE.jar tomcat-embed-el-8.5.31.jar spring-boot-1.5.13
+ .RELEASE.jar log4j-over-slf4j-1.7.25.jar mybatis-spring-boot-starter-
+ 1.3.1.jar validation-api-1.1.0.Final.jar spring-boot-starter-web-1.5.
+ 13.RELEASE.jar spring-boot-starter-logging-1.5.13.RELEASE.jar javax.s
+ ervlet-api-3.1.0.jar spring-boot-starter-1.5.13.RELEASE.jar jackson-d
+ atabind-2.8.11.1.jar mybatis-spring-1.3.1.jar classmate-1.3.4.jar spr
+ ing-tx-4.3.17.RELEASE.jar slf4j-api-1.7.25.jar snakeyaml-1.17.jar com
+ mons-collections-3.2.2.jar tomcat-embed-core-8.5.31.jar logback-core-
+ 1.1.11.jar jcl-over-slf4j-1.7.25.jar spring-web-4.3.17.RELEASE.jar to
+ mcat-embed-websocket-8.5.31.jar spring-aop-4.3.17.RELEASE.jar jackson
+ -annotations-2.8.0.jar spring-boot-starter-tomcat-1.5.13.RELEASE.jar 
+ jul-to-slf4j-1.7.25.jar jboss-logging-3.3.2.Final.jar c3p0-0.9.1.2.ja
+ r mybatis-spring-boot-autoconfigure-1.3.1.jar tomcat-annotations-api-
+ 8.5.31.jar kaptcha-2.3.2.jar jackson-core-2.8.11.jar commons-fileuplo
+ ad-1.3.2.jar tomcat-jdbc-8.5.31.jar mysql-connector-java-5.1.46.jar
+Main-Class: com.imooc.o2o.O2oApplication
+

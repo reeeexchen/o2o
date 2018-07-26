@@ -1,0 +1,2 @@
+2018-06-10 23:26:20.824 [http-nio-8060-exec-2] ERROR com.imooc.o2o.util.ImageUtil - (generateThumbnail)current relativeAddr is:\upload\item\shop1\2018061023262096468.jpg
+2018-06-10 23:28:00.004 [http-nio-8060-exec-5] ERROR com.imooc.o2o.util.ImageUtil - (generateThumbnail)current relativeAddr is:\upload\item\shop\1\2018061023280014815.jpg
