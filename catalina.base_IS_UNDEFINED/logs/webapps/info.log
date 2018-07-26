@@ -1,0 +1,24 @@
+2018-07-26 14:41:09.037 [main] INFO  com.imooc.o2o.O2oApplication - Starting O2oApplication on LAPTOP-0P6K0S4G with PID 26992 (E:\o2o\target\classes started by lenovo in E:\o2o)
+2018-07-26 14:41:09.232 [main] INFO  com.imooc.o2o.O2oApplication - No active profile set, falling back to default profiles: default
+2018-07-26 14:41:17.832 [main] INFO  com.imooc.o2o.O2oApplication - Started O2oApplication in 9.768 seconds (JVM running for 13.323)
+2018-07-25 23:59:22.189 [main] INFO  com.imooc.o2o.O2oApplication - Starting O2oApplication on LAPTOP-0P6K0S4G with PID 26032 (E:\o2o\target\classes started by lenovo in E:\o2o)
+2018-07-25 23:59:22.192 [main] INFO  com.imooc.o2o.O2oApplication - No active profile set, falling back to default profiles: default
+2018-07-25 23:59:25.425 [main] INFO  com.imooc.o2o.O2oApplication - Started O2oApplication in 3.505 seconds (JVM running for 4.439)
+2018-07-26 00:00:00.008 [schedulerFactory_Worker-1] INFO  com.imooc.o2o.service.Impl.ProductServiceImpl - Quartz Running
+2018-07-26 15:50:26.893 [main] INFO  com.imooc.o2o.O2oApplication - Starting O2oApplication on LAPTOP-0P6K0S4G with PID 4452 (E:\o2o\target\classes started by lenovo in E:\o2o)
+2018-07-26 15:50:26.895 [main] INFO  com.imooc.o2o.O2oApplication - No active profile set, falling back to default profiles: default
+2018-07-26 15:50:30.312 [main] INFO  com.imooc.o2o.O2oApplication - Started O2oApplication in 3.749 seconds (JVM running for 4.705)
+2018-07-26 15:51:52.093 [http-nio-8060-exec-3] INFO  com.imooc.o2o.util.ShortNetAddressUtil - RESPONSE STRING : {"status":0,"tinyurl":"http://dwz.cn/Pq1iWUiY","longurl":"https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxecdc5fea07104459\u0026redirect_uri=http://o2o.rextech.top/o2o/shopadmin/addshopauthmap\u0026response_type=code\u0026scope=snsapi_userinfo\u0026state=%7BaaashopIdaaa%3A23%2CaaacreateTimeaaa%3A1532591511820%7D#wechat_redirect","err_msg":""}
+2018-07-26 15:51:52.141 [http-nio-8060-exec-3] INFO  com.imooc.o2o.util.ShortNetAddressUtil - TINY URL : http://dwz.cn/Pq1iWUiY
+2018-07-26 17:33:53.570 [main] INFO  com.imooc.o2o.dao.ProductSellDailyDaoTest - Starting ProductSellDailyDaoTest on LAPTOP-0P6K0S4G with PID 7768 (started by lenovo in E:\o2o)
+2018-07-26 17:33:53.570 [main] INFO  com.imooc.o2o.dao.ProductSellDailyDaoTest - No active profile set, falling back to default profiles: default
+2018-07-26 17:34:01.738 [main] INFO  com.imooc.o2o.dao.ProductSellDailyDaoTest - Started ProductSellDailyDaoTest in 8.679 seconds (JVM running for 11.007)
+2018-07-26 17:35:16.742 [main] INFO  com.imooc.o2o.dao.ProductSellDailyDaoTest - Starting ProductSellDailyDaoTest on LAPTOP-0P6K0S4G with PID 35740 (started by lenovo in E:\o2o)
+2018-07-26 17:35:16.742 [main] INFO  com.imooc.o2o.dao.ProductSellDailyDaoTest - No active profile set, falling back to default profiles: default
+2018-07-26 17:35:21.098 [main] INFO  com.imooc.o2o.dao.ProductSellDailyDaoTest - Started ProductSellDailyDaoTest in 4.978 seconds (JVM running for 6.091)
+2018-07-26 17:35:44.205 [main] INFO  com.imooc.o2o.dao.ProductSellDailyDaoTest - Starting ProductSellDailyDaoTest on LAPTOP-0P6K0S4G with PID 30900 (started by lenovo in E:\o2o)
+2018-07-26 17:35:44.205 [main] INFO  com.imooc.o2o.dao.ProductSellDailyDaoTest - No active profile set, falling back to default profiles: default
+2018-07-26 17:35:49.119 [main] INFO  com.imooc.o2o.dao.ProductSellDailyDaoTest - Started ProductSellDailyDaoTest in 5.452 seconds (JVM running for 6.555)
+2018-07-26 17:36:02.226 [main] INFO  com.imooc.o2o.dao.ProductSellDailyDaoTest - Starting ProductSellDailyDaoTest on LAPTOP-0P6K0S4G with PID 44140 (started by lenovo in E:\o2o)
+2018-07-26 17:36:02.228 [main] INFO  com.imooc.o2o.dao.ProductSellDailyDaoTest - No active profile set, falling back to default profiles: default
+2018-07-26 17:36:06.594 [main] INFO  com.imooc.o2o.dao.ProductSellDailyDaoTest - Started ProductSellDailyDaoTest in 4.992 seconds (JVM running for 6.084)

@@ -50,6 +50,6 @@ public interface ShopService {
 	 * @param pageSize
 	 * @return
 	 */
-	ShopExecution getShopList(Shop shopCondition,int pageIndex,int pageSize);
+	ShopExecution getShopList(Shop shopCondition, int pageIndex, int pageSize);
 
 }

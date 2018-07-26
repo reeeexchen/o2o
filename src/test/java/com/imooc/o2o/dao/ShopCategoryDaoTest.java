@@ -4,8 +4,10 @@ import com.imooc.o2o.entity.ShopCategory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
@@ -15,8 +17,8 @@ import static org.junit.Assert.*;
  * @Author:REX
  * @Date: Create in 21:35 2018/3/18
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({"classpath:spring/spring-dao.xml"})
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class ShopCategoryDaoTest {
 
 	@Autowired

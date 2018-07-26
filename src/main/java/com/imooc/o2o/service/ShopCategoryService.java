@@ -12,6 +12,10 @@ import java.util.List;
  * @Date: Create in 15:37 2018/3/18
  */
 public interface ShopCategoryService {
+
+	public static final String SCLISTKEY = "shopcategorylist";
+
+
 	/**
 	 * 查询指定某个店铺下的所有商品类别信息
 	 *
@@ -49,8 +53,7 @@ public interface ShopCategoryService {
 	 * @param thumbnail
 	 * @return
 	 */
-	ShopCategoryExecution addShopCategory(ShopCategory shopCategory,
-										  CommonsMultipartFile thumbnail);
+	ShopCategoryExecution addShopCategory(ShopCategory shopCategory, CommonsMultipartFile thumbnail);
 
 	/**
 	 *
@@ -59,8 +62,7 @@ public interface ShopCategoryService {
 	 * @param thumbnailChange
 	 * @return
 	 */
-	ShopCategoryExecution modifyShopCategory(ShopCategory shopCategory,
-											 CommonsMultipartFile thumbnail, boolean thumbnailChange);
+	ShopCategoryExecution modifyShopCategory(ShopCategory shopCategory, CommonsMultipartFile thumbnail, boolean thumbnailChange);
 
 	/**
 	 *

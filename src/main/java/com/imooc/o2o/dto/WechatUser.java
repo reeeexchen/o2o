@@ -12,7 +12,7 @@ import java.io.Serializable;
 public class WechatUser implements Serializable{
 
 	// openId 标识公众号下唯一用户的id
-	@JsonProperty("openId")
+	@JsonProperty("openid")
 	private String openId;
 	// 用户昵称
 	@JsonProperty("nickname")

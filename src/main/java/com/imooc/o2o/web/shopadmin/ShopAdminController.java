@@ -39,12 +39,43 @@ public class ShopAdminController {
 
 	@RequestMapping(value = "/productoperation")
 	public String productOperation() {
-		//转发到商品添加 编辑页面
+		//转发到商品添加/编辑页面
 		return "shop/productoperation";
 	}
 
 	@RequestMapping(value = "/productmanagement")
 	public String productManagement(){
+		// 转发至商品管理页面
 		return "shop/productmanagement";
+	}
+
+	@RequestMapping(value = "/shopauthmanagement")
+	public String shopAuthManagement(){
+		// 转发店铺授权页面
+		return "shop/shopauthmanagement";
+	}
+
+	@RequestMapping(value = "/shopauthedit")
+	public String shopAuthEdit(){
+		// 转发授权修改页面
+		return "shop/shopauthedit";
+	}
+
+	@RequestMapping(value = "/operationsuccess",method = RequestMethod.GET)
+	private String operationSuccess(){
+		// 转发二维码授权操作成功页面
+		return "shop/operationsuccess";
+	}
+
+	@RequestMapping(value = "/operationfail",method = RequestMethod.GET)
+	private String operationFail(){
+		// 转发二维码授权操作失败页面
+		return "shop/operationfail";
+	}
+
+	@RequestMapping(value = "/productbuycheck",method = RequestMethod.GET)
+	private String productBuyCheck(){
+		// 转发店铺消费记录的页面
+		return "shop/productbuycheck";
 	}
 }

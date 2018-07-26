@@ -19,8 +19,7 @@ public interface ProductDao {
 	 * @param pageSize
 	 * @return
 	 */
-	List<Product> queryProductList(@Param("productCondition") Product productCondition,
-								   @Param("rowIndex") int rowIndex,@Param("pageSize") int pageSize);
+	List<Product> queryProductList(@Param("productCondition") Product productCondition, @Param("rowIndex") int rowIndex, @Param("pageSize") int pageSize);
 
 	/**
 	 * 查询对应的商品总数
@@ -63,5 +62,5 @@ public interface ProductDao {
 	 * @param shopId
 	 * @return
 	 */
-	int deleteProduct(@Param("productId") long productId,@Param("shopId") long shopId);
+	int deleteProduct(@Param("productId") long productId, @Param("shopId") long shopId);
 }

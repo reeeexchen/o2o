@@ -1,6 +1,5 @@
 package com.imooc.o2o.util.wechat;
 
-import ch.qos.logback.core.net.ssl.SSL;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -9,7 +8,6 @@ import com.imooc.o2o.dto.WechatUser;
 import com.imooc.o2o.entity.PersonInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import sun.plugin2.gluegen.runtime.BufferFactory;
 
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;

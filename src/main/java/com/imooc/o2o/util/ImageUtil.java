@@ -1,25 +1,21 @@
 package com.imooc.o2o.util;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Random;
-
-import javax.imageio.ImageIO;
-
 import com.imooc.o2o.dto.ImageHolder;
-import com.imooc.o2o.util.PathUtil;
+import net.coobird.thumbnailator.Thumbnails;
+import net.coobird.thumbnailator.geometry.Positions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
-import net.coobird.thumbnailator.Thumbnails;
-import net.coobird.thumbnailator.geometry.Positions;
+import javax.imageio.ImageIO;
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Random;
 
 public class ImageUtil {
-	private static String basePath = Thread.currentThread().getContextClassLoader().getResource("").getPath();
+	private static String basePath = PathUtil.getImgBasePath();
 	private static final SimpleDateFormat sDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
 	private static final Random r = new Random();
 	private static Logger logger = LoggerFactory.getLogger(ImageUtil.class);
@@ -34,10 +30,7 @@ public class ImageUtil {
 		File newFile = new File(cFile.getOriginalFilename());
 		try {
 			cFile.transferTo(newFile);
-		} catch (IllegalStateException e) {
-			logger.error(e.toString());
-			e.printStackTrace();
-		} catch (IOException e) {
+		} catch (IllegalStateException | IOException e) {
 			logger.error(e.toString());
 			e.printStackTrace();
 		}

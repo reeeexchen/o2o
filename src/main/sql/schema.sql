@@ -155,3 +155,104 @@ CREATE TABLE tb_product (
   CONSTRAINT fk_product_shop
     FOREIGN KEY (shop_id) REFERENCES tb_shop(shop_id)
 )ENGINE = InnoDB,AUTO_INCREMENT = 1,DEFAULT CHARSET = utf8;
+
+-- 奖品表
+CREATE TABLE tb_award(
+  award_id INT(10) NOT NULL AUTO_INCREMENT,
+  award_name VARCHAR(256) NOT NULL,
+  award_desc VARCHAR(1024) DEFAULT NULL ,
+  award_img VARCHAR(1024) DEFAULT NULL ,
+  point INT(10) NOT NULL DEFAULT 0,
+  priority INT(2) DEFAULT NULL ,
+  create_time DATETIME DEFAULT NULL ,
+  edit_time DATETIME DEFAULT NULL ,
+  enable_status INT(2) NOT NULL DEFAULT 0,
+  shop_id INT(10) DEFAULT NULL ,
+  PRIMARY KEY (award_id),
+  KEY fk_award_shop_idx(shop_id),
+  CONSTRAINT fk_award_shop
+  FOREIGN KEY (shop_id) REFERENCES tb_shop(shop_id)
+)ENGINE = InnoDB,AUTO_INCREMENT = 1,DEFAULT CHARSET = utf8;
+
+-- 用户奖品映射
+CREATE TABLE tb_user_award_map(
+  user_award_id INT(10) NOT NULL AUTO_INCREMENT,
+  user_id INT(10) NOT NULL ,
+  award_id INT(10) NOT NULL ,
+  shop_id INT(10) NOT NULL ,
+  operator_id INT(10) DEFAULT NULL,
+  create_time DATETIME DEFAULT NULL ,
+  used_status INT(2) NOT NULL DEFAULT 0,
+  point INT(10) DEFAULT NULL ,
+  PRIMARY KEY (user_award_id),
+  KEY fk_user_award_map_profile(user_id),
+  KEY fk_user_award_map_award(award_id),
+  KEY fk_user_award_map_shop(shop_id),
+  CONSTRAINT fk_user_award_map_profile FOREIGN KEY (user_id) REFERENCES tb_person_info(user_id),
+  CONSTRAINT fk_user_award_map_award FOREIGN KEY (award_id) REFERENCES tb_award(award_id),
+  CONSTRAINT fk_user_award_map_shop FOREIGN KEY (shop_id) REFERENCES tb_shop(shop_id),
+  CONSTRAINT fk_user_award_map_operator FOREIGN KEY (operator_id) REFERENCES tb_person_info(user_id)
+)ENGINE = InnoDB,AUTO_INCREMENT = 1,DEFAULT CHARSET = utf8;
+
+-- 用户消费的商品映射
+CREATE TABLE tb_user_product_map(
+  user_product_id INT(10) NOT NULL AUTO_INCREMENT,
+  user_id INT(10) DEFAULT NULL,
+  product_id INT(100) DEFAULT NULL,
+  shop_id INT(10) DEFAULT NULL,
+  operator_id INT(10) DEFAULT NULL,
+  create_time DATETIME DEFAULT NULL ,
+  point INT(10) DEFAULT 0 ,
+  PRIMARY KEY (user_product_id),
+  KEY fk_user_product_map_profile(user_id),
+  KEY fk_user_product_map_product(product_id),
+  KEY fk_user_product_map_shop(shop_id),
+  KEY fk_user_product_map_operator(operator_id),
+  CONSTRAINT fk_user_product_map_profile FOREIGN KEY (user_id) REFERENCES  tb_person_info(user_id),
+  CONSTRAINT fk_user_product_map_product FOREIGN KEY (product_id) REFERENCES  tb_product(product_id),
+  CONSTRAINT fk_user_product_map_shop FOREIGN KEY (shop_id) REFERENCES  tb_shop(shop_id),
+  CONSTRAINT fk_user_product_map_operator FOREIGN KEY (operator_id) REFERENCES  tb_person_info(user_id)
+)ENGINE = InnoDB,AUTO_INCREMENT = 1,DEFAULT CHARSET = utf8;
+
+-- 用户店铺积分映射
+CREATE TABLE tb_user_shop_map(
+  user_shop_id INT(10) NOT NULL AUTO_INCREMENT,
+  user_id INT(10) NOT NULL ,
+  shop_id INT(10) NOT NULL,
+  create_time DATETIME DEFAULT NULL ,
+  point INT(10) DEFAULT NULL ,
+  PRIMARY KEY (user_shop_id),
+  UNIQUE KEY uq_user_shop(user_id,shop_id),
+  KEY fk_user_shop_shop(shop_id),
+  CONSTRAINT fk_user_shop_shop FOREIGN KEY (shop_id) REFERENCES  tb_shop(shop_id),
+  CONSTRAINT fk_user_shop_user FOREIGN KEY (user_id) REFERENCES  tb_person_info(user_id)
+)ENGINE = InnoDB,AUTO_INCREMENT = 1,DEFAULT CHARSET = utf8;
+
+-- 销量统计
+CREATE TABLE tb_product_sell_daily(
+  product_id INT(100) DEFAULT NULL ,
+  shop_id INT(10) DEFAULT NULL,
+  create_time DATETIME DEFAULT NULL ,
+  total INT(10) DEFAULT 0 ,
+  KEY fk_product_sell_product(product_id),
+  KEY fk_product_sell_shop(shop_id),
+  CONSTRAINT fk_product_sell_product FOREIGN KEY (product_id) REFERENCES tb_product(product_id),
+  CONSTRAINT fk_product_sell_shop FOREIGN KEY (shop_id) REFERENCES  tb_shop(shop_id)
+)ENGINE = InnoDB,AUTO_INCREMENT = 1,DEFAULT CHARSET = utf8;
+
+-- 店铺授权
+CREATE TABLE tb_shop_auth_map(
+  shop_auth_id INT(10) NOT NULL AUTO_INCREMENT,
+  employee_id INT(10) NULL,
+  shop_id int(10) NOT NULL ,
+  title VARCHAR(256) DEFAULT NULL ,
+  title_flag INT(2) DEFAULT NULL ,
+  create_time DATETIME DEFAULT NULL ,
+  edit_time DATETIME DEFAULT NULL ,
+  enable_status INT(2) NOT NULL DEFAULT 0,
+  PRIMARY KEY (shop_auth_id),
+  KEY fk_shop_auth_map_shop(shop_id),
+  KEY uk_shop_auth_map(employee_id,shop_id),
+  CONSTRAINT fk_shop_auth_map_employee FOREIGN KEY (employee_id) REFERENCES tb_person_info(user_id),
+  CONSTRAINT fk_shop_auth_map_shop FOREIGN KEY (shop_id) REFERENCES tb_shop(shop_id)
+)ENGINE = InnoDB,AUTO_INCREMENT = 1,DEFAULT CHARSET = utf8;

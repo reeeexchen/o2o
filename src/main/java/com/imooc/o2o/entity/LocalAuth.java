@@ -61,4 +61,9 @@ public class LocalAuth {
 	public void setPersonInfo(PersonInfo personInfo) {
 		this.personInfo = personInfo;
 	}
+
+	@Override
+	public String toString() {
+		return "LocalAuth{" + "localAuthId=" + localAuthId + ", username='" + username + '\'' + ", password='" + password + '\'' + ", createTime=" + createTime + ", editTime=" + editTime + ", personInfo=" + personInfo + '}';
+	}
 }

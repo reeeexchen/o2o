@@ -1,30 +1,36 @@
 package com.imooc.o2o.service;
 
 import com.imooc.o2o.entity.Area;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
-
 /**
  * @Author:REX
- * @Date: Create in 10:57 2018/3/17
+ * @Date: Create in 23:59 2018/5/29
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({"classpath:spring/spring-dao.xml","classpath:spring/spring-service.xml"})
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class AreaServiceTest {
 
 	@Autowired
 	private AreaService areaService;
+	@Autowired
+	private CacheService cacheService;
 
 	@Test
 	public void getAreaList() {
 		List<Area> areaList = areaService.getAreaList();
-		assertEquals("西苑",areaList.get(0).getAreaName());
+		Assert.assertEquals(4,areaList.size());
+		Assert.assertEquals("会同美食街",areaList.get(0).getAreaName());
+
+		cacheService.removeFromCache(areaService.AREALISTKEY);
+		areaList = areaService.getAreaList();
+		Assert.assertEquals(4,areaList.size());
 	}
 }

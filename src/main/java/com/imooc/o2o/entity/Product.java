@@ -16,6 +16,7 @@ public class Product {
 	private String normalPrice;
 	private String promotionPrice;
 	private Integer priority;
+	private Integer point;
 	private Date createTime;
 	private Date editTime;
 	//-1：不可用 0：下架 1：显示
@@ -79,6 +80,14 @@ public class Product {
 
 	public void setPriority(Integer priority) {
 		this.priority = priority;
+	}
+
+	public Integer getPoint() {
+		return point;
+	}
+
+	public void setPoint(Integer point) {
+		this.point = point;
 	}
 
 	public Date getCreateTime() {

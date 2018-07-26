@@ -1,13 +1,14 @@
 package com.imooc.o2o.service.Impl;
 
+import com.imooc.o2o.dao.ShopAuthMapDao;
 import com.imooc.o2o.dao.ShopDao;
 import com.imooc.o2o.dto.ImageHolder;
 import com.imooc.o2o.dto.ShopExecution;
 import com.imooc.o2o.entity.Shop;
+import com.imooc.o2o.entity.ShopAuthMap;
 import com.imooc.o2o.enums.ShopStateEnum;
 import com.imooc.o2o.exception.ShopOperationException;
 import com.imooc.o2o.service.ShopService;
-import com.imooc.o2o.util.COSUtil;
 import com.imooc.o2o.util.ImageUtil;
 import com.imooc.o2o.util.PageCalculator;
 import com.imooc.o2o.util.PathUtil;
@@ -29,6 +30,8 @@ public class ShopServiceImpl implements ShopService {
 
 	@Autowired
 	private ShopDao shopDao;
+	@Autowired
+	private ShopAuthMapDao shopAuthMapDao;
 
 	@Override
 	@Transactional
@@ -58,6 +61,23 @@ public class ShopServiceImpl implements ShopService {
 					effectedNum = shopDao.updateShop(shop);
 					if (effectedNum <= 0) {
 						throw new ShopOperationException("更新店铺的图片失败");
+					}
+					// 执行增加ShopAuthMap的操作
+					ShopAuthMap shopAuthMap = new ShopAuthMap();
+					shopAuthMap.setEmployee(shop.getOwner());
+					shopAuthMap.setShop(shop);
+					shopAuthMap.setTitle("店家");
+					shopAuthMap.setTitleFlag(0);
+					shopAuthMap.setCreateTime(new Date());
+					shopAuthMap.setEditTime(new Date());
+					shopAuthMap.setEnableStatus(1);
+					try{
+						effectedNum = shopAuthMapDao.insertShopAuthMap(shopAuthMap);
+						if(effectedNum <= 0){
+							throw new ShopOperationException("店家授权创建失败");
+						}
+					}catch (Exception e){
+						throw new ShopOperationException("INSERT_SHOP_AUTH_MAP_ERROR : " + e.toString());
 					}
 				}
 			}

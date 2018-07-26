@@ -9,7 +9,6 @@ import com.imooc.o2o.entity.ProductImg;
 import com.imooc.o2o.enums.ProductStateEnum;
 import com.imooc.o2o.exception.ProductOperationException;
 import com.imooc.o2o.service.ProductService;
-import com.imooc.o2o.util.COSUtil;
 import com.imooc.o2o.util.ImageUtil;
 import com.imooc.o2o.util.PageCalculator;
 import com.imooc.o2o.util.PathUtil;

@@ -53,7 +53,7 @@ public class ShopManagementController {
 	@RequestMapping(value = "/getshopmanagementinfo", method = RequestMethod.GET)
 	@ResponseBody
 	private Map<String, Object> getShopManagementInfo(HttpServletRequest request) {
-		Map<String, Object> modelMap = new HashMap<String, Object>();
+		Map<String, Object> modelMap = new HashMap<>();
 		long shopId = HttpServletRequestUtil.getLong(request, "shopId");
 		if (shopId <= 0) {
 			Object currentShopObj = request.getSession().getAttribute("currentShop");
@@ -79,17 +79,14 @@ public class ShopManagementController {
 	@ResponseBody
 	private Map<String, Object> getShopList(HttpServletRequest request) {
 		Map<String, Object> modelMap = new HashMap<String, Object>();
-		PersonInfo user = new PersonInfo();
-		//session todo
-		user.setUserId(1);
-		user.setName("测试");
-		request.getSession().setAttribute("user", user);
-		user = (PersonInfo) request.getSession().getAttribute("user");
+		PersonInfo user = (PersonInfo) request.getSession().getAttribute("user");
 		try {
 			Shop shopCondition = new Shop();
 			shopCondition.setOwner(user);
 			ShopExecution se = shopService.getShopList(shopCondition, 0, 100);
+			// PUT INTO SESSION FOR PERMISSION CHECK
 			modelMap.put("shopList", se.getShopList());
+			request.getSession().setAttribute("shopList",se.getShopList());
 			modelMap.put("user", user);
 			modelMap.put("success", true);
 		} catch (Exception e) {
@@ -102,7 +99,7 @@ public class ShopManagementController {
 	@RequestMapping(value = "/getshopbyid", method = RequestMethod.GET)
 	@ResponseBody
 	private Map<String, Object> getShopById(HttpServletRequest request) {
-		Map<String, Object> modelMap = new HashMap<String, Object>();
+		Map<String, Object> modelMap = new HashMap<>();
 		Long shopId = HttpServletRequestUtil.getLong(request, "shopId");
 		if (shopId > -1) {
 			try {
@@ -117,7 +114,7 @@ public class ShopManagementController {
 			}
 		} else {
 			modelMap.put("success", false);
-			modelMap.put("errMsg", "empty shop-id");
+			modelMap.put("errMsg", "EMPTY-SHOP-ID");
 		}
 		return modelMap;
 	}

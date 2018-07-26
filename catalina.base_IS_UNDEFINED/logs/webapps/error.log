@@ -1,2 +1,7 @@
-2018-03-26 23:11:22.629 [main] ERROR com.imooc.o2o.util.ImageUtil - (generateThumbnail)current relativeAddr is:upload\item\shop\1\2018032623112261975.jpg
-2018-03-26 23:12:12.186 [main] ERROR com.imooc.o2o.util.ImageUtil - (generateThumbnail)current relativeAddr is:upload\item\shop\1\2018032623121244469.jpg
+2018-07-24 12:22:14.433 [main] ERROR com.imooc.o2o.service.WechatAuthService - INSERT PERSONINFO ERROR : org.springframework.dao.DuplicateKeyException: 
+### Error updating database.  Cause: com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException: Duplicate entry '123asdasjkl&*%$&@$' for key 'open_id'
+### The error may involve com.imooc.o2o.dao.WechatAuthDao.insertWechatAuth-Inline
+### The error occurred while setting parameters
+### SQL: INSERT INTO             tb_wechat_auth(user_id, open_id, create_time)         VALUES             (?, ?,?)
+### Cause: com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException: Duplicate entry '123asdasjkl&*%$&@$' for key 'open_id'
+; SQL []; Duplicate entry '123asdasjkl&*%$&@$' for key 'open_id'; nested exception is com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException: Duplicate entry '123asdasjkl&*%$&@$' for key 'open_id'

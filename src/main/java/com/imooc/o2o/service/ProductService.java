@@ -22,7 +22,7 @@ public interface ProductService {
 	 * @return
 	 * @throws ProductOperationException
 	 */
-	ProductExecution addProduct(Product product, ImageHolder thumbnail,List<ImageHolder> productImgHolderList) throws ProductOperationException, IOException;
+	ProductExecution addProduct(Product product, ImageHolder thumbnail, List<ImageHolder> productImgHolderList) throws ProductOperationException, IOException;
 
 	/**
 	 * 通过商品ID查询唯一的商品信息
@@ -38,7 +38,7 @@ public interface ProductService {
 	 * @param pageSize
 	 * @return
 	 */
-	ProductExecution getProductList(Product productCondition,int pageIndex,int pageSize);
+	ProductExecution getProductList(Product productCondition, int pageIndex, int pageSize);
 
 	/**
 	 * 修改商品信息以及图片处理
@@ -48,6 +48,6 @@ public interface ProductService {
 	 * @return
 	 * @throws ProductOperationException
 	 */
-	ProductExecution modifyProduct(Product product,ImageHolder thumbnail,List<ImageHolder> productImgHolderList)
+	ProductExecution modifyProduct(Product product, ImageHolder thumbnail, List<ImageHolder> productImgHolderList)
 		throws ProductOperationException;
 }

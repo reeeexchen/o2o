@@ -1,11 +1,14 @@
 package com.imooc.o2o.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.Date;
 
 /**
  * @Author:REX
  * @Date: Create in 13:50 2018/3/16
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Area {
 	private Integer areaId;
 	private String areaName;
